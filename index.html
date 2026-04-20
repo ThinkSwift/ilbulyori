@@ -43,7 +43,9 @@ header { padding: 30px 0 56px; }
 .video-wrap.landscape { width: min(920px, 100%); }
 .video { position: relative; width: 100%; aspect-ratio: 9 / 16; }
 .video-wrap.landscape .video { aspect-ratio: 16 / 9; }
-.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video iframe,
+.video video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video video { object-fit: contain; background: #000; }
 h1 { margin: 0; font-size: clamp(35px, 6vw, 70px); line-height: 1.1; letter-spacing: 0; }
 main { padding-bottom: 64px; }
 .qa { display: grid; gap: 18px; padding: 32px 0; border-top: 1px solid var(--line); }
@@ -178,7 +180,7 @@ HFN의 차별점은 같은 레시피를 반복해서 보여주는 것이 아니�
 
       <section class="qa">
         <h2 class="question">Q5. 사업 분야를 선택해주세요.</h2>
-        <p class="answer">라이프스타일, 푸드테크</p>
+        <p class="answer">라이프스타일</p>
 
       </section>
         
