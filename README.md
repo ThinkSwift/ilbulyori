@@ -1,3 +1,3 @@
 # 일불요리
 
-GitHub Pages homepage for `ilbulyori.com`.
+GitHub Pages submission homepage for `ilbulyori.com`.

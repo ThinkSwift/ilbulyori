@@ -3,77 +3,89 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>일불요리 | 식재료비 부담을 줄이는 개인화 K요리 레시피 앱</title>
-  <meta name="description" content="가지고 있는 재료와 예산에 맞춰 싸지만 맛있는 한 끼를 제안합니다." />
+  <title>일불요리 | 일불요리 브랜드를 중심으로 원가와 맛을 함께 설계하는 개인화 레시피 앱</title>
+  <meta name="description" content="고물가 시대에 가진 재료와 예산을 기준으로 맛있는 K요리 한 끼를 제안합니다." />
   <style>
     
 * { box-sizing: border-box; }
 :root {
   color-scheme: dark;
-  --bg: #080A0E;
-  --panel: rgba(255, 255, 255, 0.075);
+  --bg: #05070B;
+  --surface: rgba(255, 255, 255, 0.075);
+  --surface-strong: rgba(255, 255, 255, 0.115);
   --line: rgba(255, 255, 255, 0.14);
   --text: #F7F8FB;
-  --muted: #B8C0CC;
-  --accent: #58D6FF;
-  --accent2: #F7C948;
+  --muted: #B8C1CF;
+  --accent: #55D8FF;
+  --accent2: #FFD166;
 }
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
   background:
-    radial-gradient(circle at 18% 8%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 31rem),
-    radial-gradient(circle at 82% 12%, color-mix(in srgb, var(--accent2) 22%, transparent), transparent 34rem),
-    linear-gradient(180deg, #0B0E14 0%, #080A0E 55%, #050608 100%);
+    radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--accent) 25%, transparent), transparent 30rem),
+    radial-gradient(circle at 88% 4%, color-mix(in srgb, var(--accent2) 18%, transparent), transparent 34rem),
+    linear-gradient(180deg, #0B0E14 0%, #070910 54%, #040507 100%);
   color: var(--text);
-  line-height: 1.7;
+  line-height: 1.75;
 }
-a { color: inherit; }
-.page { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-header { min-height: 100svh; display: grid; align-content: center; padding: 40px 0 32px; }
-.topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; color: var(--muted); font-size: 14px; }
-.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; color: var(--text); }
-.mark { width: 30px; height: 30px; border-radius: 8px; background: linear-gradient(135deg, var(--accent), var(--accent2)); box-shadow: 0 0 24px color-mix(in srgb, var(--accent) 48%, transparent); }
-.hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: center; }
-.video {
-  aspect-ratio: 16 / 9;
+.page { width: min(1120px, calc(100% - 34px)); margin: 0 auto; }
+header { padding: 30px 0 56px; }
+.video-wrap {
+  width: min(430px, 100%);
+  margin: 0 auto 34px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 28px 88px rgba(0, 0, 0, 0.42);
+}
+.video { position: relative; width: 100%; aspect-ratio: 9 / 16; }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.hero-copy { width: min(920px, 100%); margin: 0 auto; text-align: center; }
+.brand { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 14px; color: var(--muted); font-size: 15px; font-weight: 800; }
+.mark { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--accent), var(--accent2)); box-shadow: 0 0 26px color-mix(in srgb, var(--accent) 46%, transparent); }
+h1 { margin: 0; font-size: clamp(35px, 6vw, 70px); line-height: 1.1; letter-spacing: 0; }
+.subtitle { margin: 18px auto 0; max-width: 840px; color: var(--muted); font-size: clamp(18px, 2vw, 22px); }
+main { padding-bottom: 64px; }
+.qa { display: grid; gap: 18px; padding: 32px 0; border-top: 1px solid var(--line); }
+.question { margin: 0; font-size: clamp(24px, 4vw, 38px); line-height: 1.22; letter-spacing: 0; }
+.answer {
+  white-space: pre-line;
+  margin: 0;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(180deg, var(--surface-strong), var(--surface));
+  color: #E8EDF5;
+  font-size: 18px;
+}
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+figure {
+  margin: 0;
   border: 1px solid var(--line);
   border-radius: 8px;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.035));
-  display: grid;
-  place-items: center;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.34);
+  background: rgba(255, 255, 255, 0.055);
 }
-.video iframe { width: 100%; height: 100%; border: 0; }
-.video-placeholder { padding: 28px; text-align: center; color: var(--muted); }
-.play { width: 70px; height: 70px; border-radius: 50%; margin: 0 auto 16px; background: var(--text); color: #050608; display: grid; place-items: center; font-size: 28px; }
-.eyebrow { color: var(--accent); font-weight: 800; letter-spacing: 0; text-transform: uppercase; font-size: 13px; }
-h1 { font-size: clamp(38px, 7vw, 76px); line-height: 1.05; margin: 12px 0 18px; letter-spacing: 0; }
-.subtitle { color: var(--muted); font-size: clamp(18px, 2vw, 23px); max-width: 760px; }
-.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
-.button { min-height: 44px; padding: 10px 16px; border-radius: 8px; border: 1px solid var(--line); text-decoration: none; font-weight: 800; }
-.primary { background: var(--text); color: #050608; border-color: transparent; }
-section { padding: 58px 0; border-top: 1px solid var(--line); }
-.section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 18px; margin-bottom: 18px; }
-h2 { font-size: clamp(26px, 4vw, 42px); line-height: 1.18; margin: 0; letter-spacing: 0; }
-.limit { color: var(--muted); font-size: 14px; white-space: nowrap; }
-.answer { font-size: 18px; color: #E7EBF2; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 24px; }
-.figure-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
-figure { margin: 0; min-height: 260px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: rgba(255,255,255,0.06); }
-.visual { height: 128px; position: relative; background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 34%, transparent), color-mix(in srgb, var(--accent2) 28%, transparent)); }
-.visual::before, .visual::after { content: ""; position: absolute; inset: 22px; border: 1px solid rgba(255,255,255,0.28); border-radius: 8px; transform: rotate(-4deg); }
-.visual::after { inset: 42px 28px 28px 48px; transform: rotate(6deg); background: rgba(0,0,0,0.18); }
-figcaption { padding: 16px; }
-figcaption strong { display: block; margin-bottom: 6px; }
-figcaption span { color: var(--muted); font-size: 14px; line-height: 1.55; }
-.footer { padding: 34px 0 50px; color: var(--muted); display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line); }
+figure img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #111;
+}
+figcaption { padding: 15px; }
+figcaption strong { display: block; margin-bottom: 5px; font-size: 15px; }
+figcaption span { display: block; color: var(--muted); font-size: 13px; line-height: 1.55; }
 @media (max-width: 900px) {
-  header { min-height: auto; }
-  .hero { grid-template-columns: 1fr; }
-  .figure-grid { grid-template-columns: 1fr; }
-  .section-title, .footer { display: block; }
-  .limit { display: block; margin-top: 6px; }
+  header { padding-top: 18px; }
+  .image-grid { grid-template-columns: 1fr; }
+  .answer { font-size: 17px; padding: 19px; }
 }
 
     :root { --accent: #FF6B4A; --accent2: #74C69D; }
@@ -82,85 +94,83 @@ figcaption span { color: var(--muted); font-size: 14px; line-height: 1.55; }
 <body>
   <div class="page">
     <header>
-      <div class="topbar">
-        <div class="brand"><span class="mark"></span>일불요리</div>
-        <div>Lifestyle / Food Tech</div>
-      </div>
-      <div class="hero">
+      <div class="video-wrap">
         <div class="video">
-          
-      <div class="video-placeholder">
-        <div class="play">▶</div>
-        <strong>YouTube Shorts</strong><br />
-        영상 공개 후 embed 링크를 이 영역에 연결합니다.
+          <iframe src="https://www.youtube.com/embed/1EnaT-Lr9ic" title="일불요리 YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
       </div>
-    
-        </div>
-        <div>
-          <div class="eyebrow">Modoo Startup Submission</div>
-          <h1>식재료비 부담을 줄이는 개인화 K요리 레시피 앱</h1>
-          <p class="subtitle">가지고 있는 재료와 예산에 맞춰 싸지만 맛있는 한 끼를 제안합니다.</p>
-          <div class="actions">
-            <a class="button primary" href="#q1">지원서 보기</a>
-            <a class="button" href="https://ilbulyori.com">ilbulyori.com</a>
-          </div>
-        </div>
+      <div class="hero-copy">
+        <div class="brand"><span class="mark"></span>일불요리</div>
+        <h1>일불요리 브랜드를 중심으로 원가와 맛을 함께 설계하는 개인화 레시피 앱</h1>
+        <p class="subtitle">고물가 시대에 가진 재료와 예산을 기준으로 맛있는 K요리 한 끼를 제안합니다.</p>
       </div>
     </header>
+    <main>
 
-    <section id="q1">
-      <div class="section-title"><h2>Q1. 이 아이디어를 떠올린 배경</h2><span class="limit">제출용 1000자 이내</span></div>
-      <div class="answer">일불요리는 고물가 속에서 가족 식사를 운영해야 하는 가정의 현실과, 한식에 대한 글로벌 관심 확대라는 흐름에서 출발했습니다. 식비를 낮추는 핵심은 무조건 적게 사는 것이 아니라, 자주 쓰는 재료를 적절히 확보한 뒤 여러 메뉴로 나누어 쓰는 데 있습니다. 하지만 많은 가정은 재료를 사도 무엇을 먼저 쓰고 어떤 메뉴로 이어갈지 몰라 식비를 아끼지 못합니다. 또한 한국 음식은 맛있지만 비싸고 집에서 해 먹기 어렵다는 인식도 있습니다. 일불요리는 사용자가 가진 재료와 원하는 예산을 기준으로, 부담 없는 가격 안에서 맛있는 K요리 레시피를 찾게 해주는 생활형 앱입니다.</div>
-    </section>
+      <section class="qa">
+        <h2 class="question">Q1. 이 아이디어를 떠올린 배경은 무엇인가요?</h2>
+        <p class="answer">일불요리는 고물가 속에서 가족 식사를 운영해야 하는 가정의 현실과, 한식에 대한 글로벌 관심 확대라는 흐름에서 출발한 아이디어입니다. 저는 오랜 기간 직접 장을 보고 요리하면서 식비를 낮추는 핵심이 무조건 적게 사는 것이 아니라, 쌀·육류·계란·채소처럼 자주 쓰는 재료를 한 번에 적절히 확보한 뒤 나눠 쓰고 여러 메뉴로 확장하는 데 있다는 점을 체감해 왔습니다. 그렇게 하면 식사 한 번의 재료비는 오히려 안정적으로 낮아지고, 맛과 만족도도 유지할 수 있습니다.
 
-    <section id="q2">
-      <div class="section-title"><h2>Q2. 누구의 어떤 문제를 해결하는가</h2><span class="limit">제출용 1000자 이내</span></div>
-      <div class="answer">일불요리의 1차 타깃은 식사 수요는 꾸준하지만 식재료비 부담이 큰 가정과 1인 가구입니다. 이들은 적게 사면 매번 비싸고, 많이 사면 남겨서 버리게 되는 문제를 겪습니다. 기존 레시피 서비스는 대개 같은 레시피를 보여주거나 남은 재료를 단순 연결하는 수준에 머무릅니다. 일불요리는 사용자가 구할 수 있는 재료, 목표 예산, 가족 취향을 바탕으로 조건에 맞는 요리를 추천합니다. 특히 일불에 해당하는 재료 조합을 기준으로 싸지만 맛있게 만들 수 있는 K요리 레시피를 제안해, 고식재료비 시대에 맛과 비용을 함께 잡는 문제를 해결하고자 합니다.</div>
-    </section>
-
-    <section id="q3">
-      <div class="section-title"><h2>Q3. 어떻게 실현할 것인가</h2><span class="limit">제출 제한 없음</span></div>
-      <div class="answer">일불요리는 앱 출시를 중심으로 실현합니다. 사용자가 가지고 있는 재료를 선택하고 원하는 예산을 입력하면, 앱은 조건에 맞는 메뉴와 필요한 재료, 조리 순서를 제안합니다. 초기에는 한식 카테고리를 먼저 정교하게 만들고, 가격 환산 기준표와 데모 화면을 바탕으로 MVP를 완성합니다. 이후에는 가족 맞춤 주간 식단, 재료 소진 흐름 추천, 개인화 기능을 구독형 서비스로 확장합니다. 사용자는 매번 같은 메뉴를 검색하는 대신, 가진 재료와 예산 안에서 질리지 않게 변주된 식단을 받아볼 수 있습니다. 장기적으로는 지역 마트 정보, SNS 콘텐츠, 글로벌 K요리 브랜드로 확장해 일불요리를 생활비 절감형 레시피 플랫폼으로 성장시키고자 합니다.</div>
-    </section>
-
-    <section>
-      <div class="section-title"><h2>제출 이미지 구성안</h2><span class="limit">최대 5장</span></div>
-      <div class="figure-grid">
-        <figure>
-          <div class="visual"></div>
-          <figcaption><strong>고물가 문제</strong><span>장보기 비용이 오르며 집밥도 부담스러운 선택이 되고 있습니다.</span></figcaption>
-        </figure>
+이 경험 위에 외국인 지인들로부터 한국 음식은 맛있지만 비싸고 집에서 해 먹기 어렵다는 이야기를 반복적으로 들으며, 한식을 더 쉽게 이해시키는 기준이 필요하다고 느꼈습니다. 그래서 전 세계인이 직관적으로 이해할 수 있는 공통 기준인 dollar를 기준으로 재료비를 보여주는 일불요리를 구상하게 되었습니다. 여기서 1불은 판매가가 아니라 실제 재료비 기준을 뜻합니다. 나아가 일불요리라는 상호 자체를 핵심 브랜드로 키워, 한식을 쉽고 합리적으로 경험하게 하는 대표 이름으로 만들고, 이후에는 이 구조를 다양한 문화권의 레시피로 자연스럽게 확장하고자 합니다.</p>
+      </section>
         
 
-        <figure>
-          <div class="visual"></div>
-          <figcaption><strong>예산 기준</strong><span>재료비를 한 끼 기준으로 환산해 선택 기준을 단순화합니다.</span></figcaption>
-        </figure>
+      <section class="qa">
+        <h2 class="question">Q2. 누구의 어떤 문제를 해결하고자 하나요?</h2>
+        <p class="answer">일불요리의 1차 타깃은 3~4인 가정처럼 식사 수요는 꾸준하지만 식재료 운영은 늘 부담스러운 가정입니다. 이런 가정은 어느 정도 재료를 사야 단가가 좋아지는지 알면서도, 막상 사 놓으면 무엇을 먼저 쓰고 어떤 메뉴로 이어갈지 몰라 식비를 아끼지 못하는 경우가 많습니다. 적게 사면 매번 비싸고, 많이 사면 남기게 되는 것이 문제입니다.
+
+또한 동네마다 자주 가는 마트가 다르고, 계절마다 재료가 다르며, 가족마다 좋아하는 맛도 다릅니다. 그런데 기존 레시피 서비스는 대개 누구에게나 같은 레시피를 보여주거나, 남은 재료를 넣으면 이미 있는 레시피를 연결해 주는 수준에 머뭅니다. 일불요리는 이와 다르게 사용자가 구할 수 있는 재료, 목표 재료비, 가족 취향을 바탕으로 맞춤형 한식 레시피를 추천하는 서비스입니다.
+
+즉 정해진 레시피를 일방적으로 보여주는 것이 아니라, 각자의 재료 상황과 선호에 맞는 나만의 일불요리를 제안하는 것이 핵심입니다. 이 점이 한식의 진입장벽을 낮추고, 이후 다른 문화권의 레시피로 확장될 때도 일불요리 브랜드만의 차별점이 됩니다.</p>
+      </section>
         
 
-        <figure>
-          <div class="visual"></div>
-          <figcaption><strong>개인화 추천</strong><span>보유 재료와 가족 취향에 맞춰 K요리 후보를 제안합니다.</span></figcaption>
-        </figure>
+      <section class="qa">
+        <h2 class="question">Q3. 이 아이디어를 어떻게 실현하고 싶으신가요?</h2>
+        <p class="answer">현재는 관련 인력을 이미 섭외해 대표를 중심으로 초기 실행 체계를 준비하고 있으며, HFN(Hidden Flavor Network, 일불요리 개발 AI)을 활용한 앱 출시를 중심으로 사업을 실현하고자 합니다. 사용자가 동네 마트 재료, 목표 재료비, 가족 취향을 입력하면 앱이 그 조건에 맞는 레시피를 추천하는 것이 기본 구조입니다. 초기에는 한식 카테고리를 먼저 정교하게 만들고, 가격 환산 기준표와 데모 화면을 바탕으로 MVP를 완성한 뒤 같은 구조를 다른 요리로 확장할 계획입니다.
+
+HFN의 차별점은 같은 레시피를 반복해서 보여주는 것이 아니라, 사용자가 좋아한 조합과 재료 흐름을 바탕으로 조금씩 다른 후보를 제안해 질리지 않게 만든다는 점입니다. 즉 남은 재료를 넣으면 기존 레시피를 단순 연결하는 수준이 아니라, 지금 재료 상황과 선호에 맞춰 기존 조합을 변형한 후보를 제안하는 방향입니다.
+
+수익 구조는 무료와 유료를 분리해 설계할 계획입니다. 기본 레시피 추천과 콘텐츠 유입은 무료로 제공하고, 가족 맞춤 주간 식단, 재료 소진 흐름 추천, 개인화 기능은 구독형 서비스로 확장하고자 합니다. 사용자는 매번 같은 메뉴를 다시 검색하는 대신, 질리지 않게 변주된 식단을 계속 받아보며 건강하게 먹고 가계부가 안정되는 효과를 체감하게 됩니다. 이 경험이 반복 사용과 구독으로 이어지고, 이후에는 지역 마트 정보나 지역 기반 추천 서비스로도 확장될 수 있습니다. 초기에는 앱과 블로그·SNS를 함께 운영해 일불요리 상호를 중심으로 브랜드를 축적하고, 반복 사용이 쌓일수록 HFN 추천 품질이 높아져 구독 전환으로 이어지게 할 계획입니다.</p>
+      </section>
+        
+      <section class="qa">
+        <h2 class="question">Q4. 제출 이미지 구성은 어떻게 되나요?</h2>
+        <p class="answer">이미지는 고물가 속 식재료 운영 부담, 실제 구매 가격을 한 끼 재료비로 환산하는 기준, HFN이 가족 선호와 지역 재료를 반영해 레시피를 설계하는 구조, 앱 데모 화면, 블로그·SNS 유입에서 구독 확장으로 이어지는 플라이휠 순서로 구성합니다. 기존 최종 제출 문서의 이미지 흐름을 그대로 홈페이지에 옮겨 심사자가 문항과 시각 자료를 한 번에 확인할 수 있게 합니다.</p>
+        <div class="image-grid">
+
+          <figure>
+            <img src="assets/image-01.png" alt="문제 배경" loading="lazy" />
+            <figcaption><strong>문제 배경</strong><span>고물가 속 가정의 식재료 운영 부담과 한식 접근성 문제</span></figcaption>
+          </figure>
         
 
-        <figure>
-          <div class="visual"></div>
-          <figcaption><strong>조리 흐름</strong><span>필요 재료와 조리 순서를 바로 확인하고 요리를 시작합니다.</span></figcaption>
-        </figure>
+          <figure>
+            <img src="assets/image-02.png" alt="재료비 기준" loading="lazy" />
+            <figcaption><strong>재료비 기준</strong><span>실제 구매 가격을 한 끼 기준 재료비로 바꾸는 구조</span></figcaption>
+          </figure>
         
 
-        <figure>
-          <div class="visual"></div>
-          <figcaption><strong>수익 확장</strong><span>무료 레시피에서 맞춤 식단 구독과 지역 추천으로 확장합니다.</span></figcaption>
-        </figure>
+          <figure>
+            <img src="assets/image-03.png" alt="HFN 구조" loading="lazy" />
+            <figcaption><strong>HFN 구조</strong><span>재료비, 지역 재료, 가족 선호를 반영하는 개인화 레시피 설계</span></figcaption>
+          </figure>
+        
+
+          <figure>
+            <img src="assets/image-04.png" alt="앱 데모" loading="lazy" />
+            <figcaption><strong>앱 데모</strong><span>동네 마트 재료와 목표 원가를 입력하면 레시피 후보를 제안</span></figcaption>
+          </figure>
+        
+
+          <figure>
+            <img src="assets/image-05.png" alt="사업 플라이휠" loading="lazy" />
+            <figcaption><strong>사업 플라이휠</strong><span>콘텐츠 유입, 사용자 반응, HFN 고도화, 구독 확장 구조</span></figcaption>
+          </figure>
+        
         </div>
-    </section>
-
-    <div class="footer">
-      <div>© 일불요리. Prepared for 모두의 창업.</div>
-      <div>ilbulyori.com</div>
-    </div>
+      </section>
+    </main>
   </div>
 </body>
 </html>
