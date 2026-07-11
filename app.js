@@ -35,7 +35,7 @@ function render(c) {
   }
   document.title = `${c.brand?.name || "일불요리"} · ${c.brand?.tagline || ""}`;
 
-  const steps = (c.how?.steps || [])
+  const steps = (c.record?.steps || [])
     .map(
       (s, i) => `
       <div class="step">
@@ -51,13 +51,22 @@ function render(c) {
       const photo = p.imageId
         ? `<div class="photo"><img src="${imgUrl(p.imageId)}" alt="${esc(p.title)}" loading="lazy" /></div>`
         : `<div class="photo empty">🍚</div>`;
+      const cost = p.cost ? `<div class="cost">재료비 ${esc(p.cost)}</div>` : "";
+      const ings =
+        Array.isArray(p.ingredients) && p.ingredients.length
+          ? `<ul class="ings">${p.ingredients
+              .map((it) => `<li><span>${esc(it.name)}</span><span class="price">${esc(it.price)}</span></li>`)
+              .join("")}</ul>`
+          : "";
       const date = p.date ? `<span class="date">${esc(p.date)}</span>` : "";
       return `
       <article class="post">
         ${photo}
         <div class="body">
           <h3>${esc(p.title)}</h3>
+          ${cost}
           <p>${esc(p.body)}</p>
+          ${ings}
           ${date}
         </div>
       </article>`;
@@ -82,10 +91,10 @@ function render(c) {
       </div>
     </section>
 
-    <section id="how">
+    <section id="record">
       <div class="wrap">
-        <p class="eyebrow">How it works</p>
-        <h2>${esc(c.how?.title)}</h2>
+        <p class="eyebrow">Record</p>
+        <h2>${esc(c.record?.title)}</h2>
         <div class="steps">${steps}</div>
       </div>
     </section>
@@ -99,13 +108,13 @@ function render(c) {
       </div>
     </section>
 
-    <section id="app">
+    <section id="next">
       <div class="wrap">
         <div class="appband">
           <div>
-            <h2>${esc(c.app?.title)}</h2>
-            <p>${esc(c.app?.body)}</p>
-            <span class="status">${esc(c.app?.status || "출시 준비 중")}</span>
+            <h2>${esc(c.roadmap?.title)}</h2>
+            <p>${esc(c.roadmap?.body)}</p>
+            <span class="status">${esc(c.roadmap?.note || "기록으로 먼저 시작합니다")}</span>
           </div>
           <img src="assets/logo_white.png" alt="일불요리 로고" onerror="this.style.display='none'" />
         </div>
