@@ -1,10 +1,10 @@
-// 주인장 방 — 로그인 + 자비스 채팅 + 사진 첨부.
+// 주인장 방 — 로그인 + 비서 채팅 + 사진 첨부.
 const API_BASE = (window.ILBUL_CONFIG && window.ILBUL_CONFIG.API_BASE) || "";
 const TOKEN_KEY = "ilbul_token";
 
 const $ = (id) => document.getElementById(id);
 let token = localStorage.getItem(TOKEN_KEY) || "";
-let messages = []; // {role, content} — 자비스에 보내는 히스토리
+let messages = []; // {role, content} — 비서에 보내는 히스토리
 let pending = []; // 첨부된 사진: {id, dataUrl}
 
 // ── 화면 전환 ──────────────────────────────────────────────
@@ -57,7 +57,7 @@ $("logout").addEventListener("click", () => {
 function greet() {
   addBubble(
     "jarvis",
-    "안녕하세요 사장님! 저는 자비스예요. 홈페이지를 대신 꾸며 드릴게요.\n오늘 만든 요리 사진을 📷 로 올리고 “이걸로 소개 글 써줘”라고 말씀만 하시면 됩니다."
+    "안녕하세요 사장님! 저는 비서예요. 홈페이지를 대신 꾸며 드릴게요.\n오늘 만든 요리 사진을 📷 로 올리고 “이걸로 소개 글 써줘”라고 말씀만 하시면 됩니다."
   );
   addChips([
     "오늘 만든 요리 올리기",
