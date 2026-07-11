@@ -52,7 +52,7 @@
   },
   "footer": {
     "note": "일불요리 · 모두의 창업 선정 프로젝트",
-    "contact": "hello@swiftian.com"
+    "contact": ""
   },
   "worklog": [
     { "t": "2026-07-12", "note": "블로그형 요리 기록 홈페이지 준비 시작" }
