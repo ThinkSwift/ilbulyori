@@ -1,0 +1,11 @@
+.DS_Store
+.wrangler/
+**/.wrangler/
+.dev.vars
+**/.dev.vars
+node_modules/
+**/node_modules/
+
+# 백엔드는 공개 GitHub Pages 저장소에 올리지 않습니다(계정ID·게이트웨이 주소 노출 방지 +
+# Pages가 worker 소스를 공개 서빙하지 않도록). 로컬 worker/ 에 두고 wrangler로만 배포.
+worker/

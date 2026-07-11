@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>일불요리 · 주인장 방</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="assets/logo.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body { background: var(--cream); }
+      .admin-wrap { width: min(760px, calc(100% - 32px)); margin: 0 auto; }
+
+      /* 로그인 */
+      .login { min-height: 80vh; display: grid; place-items: center; }
+      .login .card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 40px 34px; box-shadow: var(--shadow); text-align: center; width: min(400px, 100%); }
+      .login img { width: 54px; height: 54px; object-fit: contain; margin: 0 auto 16px; }
+      .login h1 { font-family: var(--serif); font-weight: 500; font-size: 26px; margin: 0 0 6px; }
+      .login p { color: var(--taupe); font-size: 14px; margin: 0 0 24px; }
+      input[type="password"], .composer textarea {
+        width: 100%; font-family: var(--sans); font-size: 16px; color: var(--ink);
+        background: var(--cream); border: 1px solid var(--line); border-radius: 12px; padding: 13px 15px;
+      }
+      input:focus, textarea:focus { outline: none; border-color: var(--persimmon); }
+      .err { color: var(--persimmon-deep); font-size: 13px; margin-top: 12px; min-height: 16px; }
+
+      /* 채팅 */
+      .admin-top { display: flex; align-items: center; justify-content: space-between; height: 60px; border-bottom: 1px solid var(--line); }
+      .admin-top .brand { font-size: 17px; }
+      .admin-top .right { display: flex; gap: 14px; align-items: center; }
+      .admin-top a, .admin-top button.link { color: var(--taupe); font-size: 14px; text-decoration: none; background: none; border: none; cursor: pointer; font-family: var(--sans); }
+      .admin-top a:hover { color: var(--persimmon); }
+
+      .chat { padding: 20px 0 200px; }
+      .msg { display: flex; gap: 10px; margin: 16px 0; }
+      .msg .who { flex: none; width: 34px; height: 34px; border-radius: 999px; display: grid; place-items: center; font-size: 15px; }
+      .msg.jarvis .who { background: var(--ink); color: var(--cream); }
+      .msg.me { flex-direction: row-reverse; }
+      .msg.me .who { background: color-mix(in srgb, var(--persimmon) 16%, transparent); color: var(--persimmon-deep); }
+      .bubble { max-width: 78%; padding: 13px 16px; border-radius: 16px; font-size: 15.5px; line-height: 1.7; white-space: pre-wrap; }
+      .msg.jarvis .bubble { background: var(--card); border: 1px solid var(--line); border-top-left-radius: 5px; }
+      .msg.me .bubble { background: var(--persimmon); color: #fff; border-top-right-radius: 5px; }
+      .msg .bubble img { border-radius: 10px; margin-top: 8px; max-width: 200px; }
+      .typing { color: var(--taupe); font-size: 14px; }
+
+      .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 4px; }
+      .chip { font-size: 13px; color: var(--ink-soft); background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 7px 13px; cursor: pointer; }
+      .chip:hover { border-color: var(--persimmon); color: var(--persimmon); }
+
+      /* 입력창 */
+      .composer { position: fixed; left: 0; right: 0; bottom: 0; background: color-mix(in srgb, var(--cream) 92%, transparent); backdrop-filter: blur(8px); border-top: 1px solid var(--line); padding: 12px 0 16px; }
+      .composer .admin-wrap { display: flex; flex-direction: column; gap: 8px; }
+      .attachments { display: flex; gap: 8px; flex-wrap: wrap; }
+      .attachments .thumb { position: relative; width: 56px; height: 56px; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }
+      .attachments .thumb img { width: 100%; height: 100%; object-fit: cover; }
+      .attachments .thumb.loading { display: grid; place-items: center; color: var(--taupe); font-size: 11px; background: var(--cream-2); }
+      .attachments .thumb button { position: absolute; top: 2px; right: 2px; width: 18px; height: 18px; border-radius: 999px; border: none; background: rgba(0,0,0,0.55); color: #fff; font-size: 11px; cursor: pointer; line-height: 1; }
+      .composer .row { display: flex; gap: 10px; align-items: flex-end; }
+      .composer textarea { resize: none; max-height: 140px; }
+      .iconbtn { flex: none; width: 46px; height: 46px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); cursor: pointer; font-size: 20px; }
+      .iconbtn:hover { border-color: var(--persimmon); }
+      .sendbtn { flex: none; height: 46px; padding: 0 20px; border-radius: 12px; border: none; background: var(--persimmon); color: #fff; font-weight: 500; font-size: 15px; cursor: pointer; }
+      .sendbtn:disabled { opacity: 0.5; cursor: default; }
+      .hint { text-align: center; color: var(--taupe); font-size: 12px; }
+      .hidden { display: none !important; }
+    </style>
+  </head>
+  <body>
+    <!-- 로그인 화면 -->
+    <div id="login" class="login">
+      <div class="card">
+        <img src="assets/logo.png" alt="일불요리" />
+        <h1>주인장 방</h1>
+        <p>비밀번호를 넣으면 자비스와 함께<br />홈페이지를 꾸밀 수 있어요.</p>
+        <form id="login-form">
+          <input id="password" type="password" placeholder="비밀번호" autocomplete="current-password" />
+          <div class="err" id="login-err"></div>
+          <button class="btn" type="submit" style="width: 100%; margin-top: 6px">들어가기</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- 채팅 화면 -->
+    <div id="app" class="hidden">
+      <div class="admin-wrap">
+        <div class="admin-top">
+          <span class="brand">🍳 주인장 방</span>
+          <div class="right">
+            <a href="/" target="_blank">홈페이지 보기 ↗</a>
+            <button class="link" id="logout">나가기</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-wrap chat" id="chat"></div>
+
+      <div class="composer">
+        <div class="admin-wrap">
+          <div class="attachments" id="attachments"></div>
+          <div class="row">
+            <button class="iconbtn" id="photo-btn" title="사진 첨부">📷</button>
+            <input type="file" id="file-input" accept="image/*" multiple class="hidden" />
+            <textarea id="input" rows="1" placeholder="자비스에게 편하게 말하세요. 예) 이 사진으로 오늘 만든 김치찌개 올려줘"></textarea>
+            <button class="sendbtn" id="send">보내기</button>
+          </div>
+          <p class="hint">자비스가 홈페이지 글·사진을 대신 고쳐 드려요. 바뀐 건 “홈페이지 보기”에서 확인하세요. (반영까지 최대 1분)</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>
