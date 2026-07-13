@@ -52,11 +52,17 @@ function render(c) {
         ? `<div class="photo"><img src="${imgUrl(p.imageId)}" alt="${esc(p.title)}" loading="lazy" /></div>`
         : `<div class="photo empty">🍚</div>`;
       const cost = p.cost ? `<div class="cost">재료비 ${esc(p.cost)}</div>` : "";
+      const recipe =
+        Array.isArray(p.recipe) && p.recipe.length
+          ? `<div class="recipe"><h4>만드는 법</h4><ol>${p.recipe
+              .map((s) => `<li>${esc(s)}</li>`)
+              .join("")}</ol></div>`
+          : "";
       const ings =
         Array.isArray(p.ingredients) && p.ingredients.length
-          ? `<ul class="ings">${p.ingredients
+          ? `<div class="ings"><h4>재료</h4><ul>${p.ingredients
               .map((it) => `<li><span>${esc(it.name)}</span><span class="price">${esc(it.price)}</span></li>`)
-              .join("")}</ul>`
+              .join("")}</ul></div>`
           : "";
       const date = p.date ? `<span class="date">${esc(p.date)}</span>` : "";
       return `
@@ -66,6 +72,7 @@ function render(c) {
           <h3>${esc(p.title)}</h3>
           ${cost}
           <p>${esc(p.body)}</p>
+          ${recipe}
           ${ings}
           ${date}
         </div>

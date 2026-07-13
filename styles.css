@@ -98,7 +98,11 @@ h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(26px, 4vw, 38
   border: 1px solid color-mix(in srgb, var(--persimmon) 30%, transparent);
   padding: 4px 11px; border-radius: 999px;
 }
-.post .ings { list-style: none; margin: 14px 0 0; padding: 12px 0 0; border-top: 1px solid var(--line); }
+.post .recipe, .post .ings { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
+.post .recipe h4, .post .ings h4 { margin: 0 0 8px; font-size: 12px; font-weight: 500; color: var(--persimmon-deep); letter-spacing: 0.04em; text-transform: uppercase; }
+.post .recipe ol { margin: 0; padding-left: 20px; }
+.post .recipe li { font-size: 14px; color: var(--ink-soft); line-height: 1.65; padding: 2px 0; }
+.post .ings ul { list-style: none; margin: 0; padding: 0; }
 .post .ings li { display: flex; justify-content: space-between; gap: 12px; font-size: 13.5px; color: var(--ink-soft); padding: 3px 0; }
 .post .ings .price { color: var(--taupe); white-space: nowrap; }
 .post .date { display: block; margin-top: 12px; color: var(--taupe); font-size: 13px; }
